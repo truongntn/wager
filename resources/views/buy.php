@@ -38,8 +38,8 @@ if (isset($_POST["txtPrice"]) && $_POST["txtPrice"] > 0) {
             );
 
             DB::table('wager')
-            ->where('id', $wager_id)
-            ->update(array('current_selling_price' => $price,'percentage_sold' =>  $price/$selected_wager->selling_price,'amount_sold' =>  $price));
+                ->where('id', $wager_id)
+                ->update(array('current_selling_price' => $price, 'percentage_sold' => $price / $selected_wager->selling_price, 'amount_sold' => $price));
 
             $wagers = DB::select('select * from wager_buying order by id desc limit 0,1 ', array(1));
             header(_build_http_header_string(201));
